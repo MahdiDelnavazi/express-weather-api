@@ -22,7 +22,8 @@
         "baseUrl": "./",
         "paths": {
             "@common/*": ["src/common/*"],
-            "@services/*": ["src/services/*"]
+            "@services/*": ["src/services/*"],
+            "@domains/*": ["src/domains/*"]
         },
         "plugins": [
             {
