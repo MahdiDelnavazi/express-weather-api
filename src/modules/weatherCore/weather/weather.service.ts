@@ -36,7 +36,7 @@ export class WeatherService {
     }
 
     async fetchWeather(fetchWeatherDto: FetchWeatherDto): Promise<Weather> {
-        const weatherInfo = await this.weatherProvider.getWeather(
+        const cachedWeather = await this.weatherProvider.getWeather(
             fetchWeatherDto.country,
             fetchWeatherDto.cityName,
         );
@@ -44,7 +44,8 @@ export class WeatherService {
         const weather = Weather.fromWeatherInfo(
             fetchWeatherDto.country,
             fetchWeatherDto.cityName,
-            weatherInfo,
+            cachedWeather.weather,
+            cachedWeather.date,
         );
 
         return this.weatherRepository.insert(weather);
