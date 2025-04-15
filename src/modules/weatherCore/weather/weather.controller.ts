@@ -78,5 +78,16 @@ export const WeatherController = () => {
         ),
     );
 
+    router.delete(
+        '/:id',
+        handleRoute(async (req: Request, res: Response, next: NextFunction) => {
+            const id = req.params.id;
+
+            await weatherService.deleteOneById(id);
+
+            res.sendStatus(HttpStatus.NO_CONTENT);
+        }),
+    );
+
     return router;
 };
