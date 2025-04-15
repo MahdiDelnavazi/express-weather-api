@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("./common/config");
 const database_1 = require("./common/database");
-const weather_controller_1 = require("./domains/weather/weather.controller");
+const weather_controller_1 = require("./modules/weatherCore/weather/weather.controller");
 const middlewares_1 = require("./common/middlewares");
 const express_1 = __importDefault(require("express"));
 const startServer = async () => {

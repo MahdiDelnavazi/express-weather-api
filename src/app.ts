@@ -1,6 +1,6 @@
 import { Config } from '@common/config';
 import { Database } from '@common/database';
-import { WeatherController } from '@domains/weather/weather.controller';
+import { WeatherController } from '@modules/weatherCore/weather/weather.controller';
 import { errorHandler } from '@common/middlewares';
 import express from 'express';
 

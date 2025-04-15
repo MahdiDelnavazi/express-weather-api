@@ -23,7 +23,7 @@
         "paths": {
             "@common/*": ["src/common/*"],
             "@services/*": ["src/services/*"],
-            "@domains/*": ["src/domains/*"]
+            "@modules/*": ["src/modules/*"]
         },
         "plugins": [
             {
