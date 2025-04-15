@@ -6,6 +6,7 @@ import express from 'express';
 import { catchMissingRoutes } from '@common/middlewares/catchMissingRoutes.middleware';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import { Cache } from '@common/cache';
 
 const swaggerSpecs = swaggerJSDoc({
     apis: ['src/modules/**/*.controller.ts', 'src/**/*.dto.ts'],
@@ -25,6 +26,10 @@ const startServer = async () => {
     // Initialize database connection
     await Database.initialize();
     console.log('Database connection established');
+
+    // Initialize redis connection
+    await Cache.connect();
+    console.log('Cache connection established');
 
     // Middlewares
     app.use(express.json());
@@ -52,6 +57,7 @@ const startServer = async () => {
     // Shutdown hook
     process.on('exit', async () => {
         await Database.close();
+        Cache.close();
     });
 };
 
