@@ -3,7 +3,7 @@ import { Weather, FindWeatherRecordsDto } from '@modules/weatherCore/weather';
 import { WeatherRepository } from '@modules/weatherCore/weather/weather.repository';
 import { WeatherProviderService } from '@modules/weatherCore/weatherProvider/weatherProvider.service';
 import { FetchWeatherDto } from './dto';
-import { NotFoundException } from '@common/exceptions';
+import { BadRequestException, NotFoundException } from '@common/exceptions';
 import { isUUID } from 'class-validator';
 import { UpdateWeatherRecordDto } from '@modules/weatherCore/weather/dto/updateWeatherRecord.dto';
 
@@ -83,5 +83,20 @@ export class WeatherService {
         if (!deleted) {
             throw new NotFoundException();
         }
+    }
+
+    async findLatestByCityName(cityName: string): Promise<Weather> {
+        if (!cityName) {
+            throw new BadRequestException('City name is required');
+        }
+
+        const weatherRecord =
+            await this.weatherRepository.findLatestByCityName(cityName);
+
+        if (!weatherRecord) {
+            throw new NotFoundException();
+        }
+
+        return weatherRecord;
     }
 }

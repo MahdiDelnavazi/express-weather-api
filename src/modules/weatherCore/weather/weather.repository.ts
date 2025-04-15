@@ -45,4 +45,15 @@ export class WeatherRepository {
         const result = await this.repository.delete({ id: id });
         return result.affected === 1;
     }
+
+    async findLatestByCityName(cityName: string): Promise<Weather> {
+        return this.repository.findOne({
+            where: {
+                cityName: cityName,
+            },
+            order: {
+                createdAt: 'DESC',
+            },
+        });
+    }
 }
