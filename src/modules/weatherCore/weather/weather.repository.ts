@@ -1,11 +1,22 @@
 import { Repository } from 'typeorm';
-import { Weather } from '@modules/weatherCore/weather';
+import { Weather, FindWeatherRecordsDto } from '@modules/weatherCore/weather';
 
 export class WeatherRepository {
     constructor(private readonly repository: Repository<Weather>) {}
 
-    async findAll(): Promise<Weather[]> {
-        return this.repository.find();
+    async findAll(
+        findWeatherRecordsDto: FindWeatherRecordsDto,
+    ): Promise<Weather[]> {
+        return this.repository.find({
+            where: {
+                cityName: findWeatherRecordsDto.cityName,
+                country: findWeatherRecordsDto.country,
+            },
+        });
+    }
+
+    async findOneById(id: string): Promise<Weather> {
+        return this.repository.findOneBy({ id: id });
     }
 
     async insert(weather: Weather): Promise<Weather> {
