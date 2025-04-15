@@ -3,6 +3,7 @@ import { Database } from '@common/database';
 import { WeatherController } from '@modules/weatherCore/weather/weather.controller';
 import { errorHandler } from '@common/middlewares';
 import express from 'express';
+import { catchMissingRoutes } from '@common/middlewares/catchMissingRoutes.middleware';
 
 const startServer = async () => {
     const app = express();
@@ -20,6 +21,7 @@ const startServer = async () => {
 
     // Error handler
     app.use(errorHandler);
+    app.use(catchMissingRoutes);
 
     // Start server
     app.listen(Config.Server.PORT, async (error?: Error) => {
