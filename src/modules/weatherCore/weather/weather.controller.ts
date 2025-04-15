@@ -3,6 +3,7 @@ import { FetchWeatherDto, FindWeatherRecordsDto } from './dto';
 import { WeatherService } from '@modules/weatherCore/weather/weather.service';
 import { Router, Request, Response, NextFunction } from 'express';
 import { HttpStatus } from '@common/enums';
+import { UpdateWeatherRecordDto } from '@modules/weatherCore/weather/dto/updateWeatherRecord.dto';
 
 export const WeatherController = () => {
     const router = Router();
@@ -52,6 +53,27 @@ export const WeatherController = () => {
             },
             {
                 body: FetchWeatherDto,
+            },
+        ),
+    );
+
+    router.put(
+        '/:id',
+        handleRoute(
+            async (req: Request, res: Response, next: NextFunction) => {
+                const id = req.params.id;
+                const updateWeatherRecordDto =
+                    req.body as UpdateWeatherRecordDto;
+
+                const updatedWeatherRecord = await weatherService.updateOneById(
+                    id,
+                    updateWeatherRecordDto,
+                );
+
+                res.status(HttpStatus.OK).send(updatedWeatherRecord);
+            },
+            {
+                body: UpdateWeatherRecordDto,
             },
         ),
     );
