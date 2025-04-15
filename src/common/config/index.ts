@@ -22,6 +22,16 @@ export const Config = {
         PASSWORD: process.env.PGSQL_PASSWORD,
         DATABASE: process.env.PGSQL_DATABASE || 'weather_app',
     },
+    Redis: {
+        HOST: process.env.REDIS_HOST,
+        PORT: +process.env.REDIS_PORT || 6379,
+        USERNAME: process.env.REDIS_USERNAME,
+        PASSWORD: process.env.REDIS_PASSWORD,
+        /**
+         * The expiry time of the Redis cache in seconds
+         */
+        TTL: +process.env.REDIS_EXPIRATION || 60,
+    },
     OpenWeatherMap: {
         GEOCODING_API_URL: process.env.OPENWEATHERMAP_GEOCODING_API_URL,
         API_URL: process.env.OPENWEATHERMAP_API_URL,
