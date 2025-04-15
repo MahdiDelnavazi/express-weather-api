@@ -8,6 +8,9 @@ const handleRoute = (func, options) => {
             if (options?.body) {
                 req.body = await helpers_1.ValidationHelper.validate(req.body, options.body);
             }
+            if (options?.query) {
+                req.query = (await helpers_1.ValidationHelper.validate(req.query, options.query));
+            }
             await func(req, res, next);
         }
         catch (error) {

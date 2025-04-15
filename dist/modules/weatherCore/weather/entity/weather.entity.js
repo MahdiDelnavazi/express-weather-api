@@ -26,7 +26,6 @@ let Weather = Weather_1 = class Weather {
             temperature: weatherInfo.main.temp,
             humidity: weatherInfo.main.humidity,
             windSpeed: weatherInfo.wind.speed,
-            fetchedAt: new Date(),
         });
     }
 };
@@ -60,7 +59,11 @@ __decorate([
     __metadata("design:type", Number)
 ], Weather.prototype, "windSpeed", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'fetched_at', type: 'timestamp' }),
+    (0, typeorm_1.Column)({
+        name: 'fetched_at',
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP',
+    }),
     __metadata("design:type", Date)
 ], Weather.prototype, "fetchedAt", void 0);
 __decorate([
