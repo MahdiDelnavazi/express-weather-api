@@ -4,6 +4,20 @@ import { WeatherController } from '@modules/weatherCore/weather/weather.controll
 import { errorHandler } from '@common/middlewares';
 import express from 'express';
 import { catchMissingRoutes } from '@common/middlewares/catchMissingRoutes.middleware';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+
+const swaggerSpecs = swaggerJSDoc({
+    apis: ['src/modules/**/*.controller.ts', 'src/**/*.dto.ts'],
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Weather API',
+            version: '1.0.0',
+        },
+        tags: [{ name: 'Weather', description: 'Weather related endpoints' }],
+    },
+});
 
 const startServer = async () => {
     const app = express();
@@ -15,6 +29,7 @@ const startServer = async () => {
     // Middlewares
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
     // Routes
     app.use('/weather', WeatherController());
