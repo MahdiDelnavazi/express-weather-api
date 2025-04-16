@@ -18,7 +18,15 @@ const swaggerSpecs = swaggerJSDoc({
             title: 'Weather API',
             version: '1.0.0',
         },
-        tags: [{ name: 'Weather', description: 'Weather related endpoints' }],
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
     },
 });
 

@@ -1,7 +1,7 @@
 import { ClassConstructor } from 'class-transformer';
 import { NextFunction, Request, Response } from 'express';
 import { ValidationHelper } from '@common/helpers';
-import { QueryParams } from '@common/types';
+import { UnauthorizedException } from '@common/exceptions';
 
 export type HandleRouteOptions<
     BodyType extends object,
@@ -52,10 +52,9 @@ export const handleRoute = <
             }
 
             await func(req, res, next);
+            next();
         } catch (error) {
             next(error);
-        } finally {
-            next();
         }
     };
 };

@@ -11,6 +11,10 @@ export class UserService {
         return this.userRepository.findOneByEmail(email);
     }
 
+    async findOneById(id: string): Promise<User> {
+        return this.userRepository.findOneById(id);
+    }
+
     async create(signupDto: SignupDto): Promise<User> {
         return this.userRepository.create(signupDto);
     }

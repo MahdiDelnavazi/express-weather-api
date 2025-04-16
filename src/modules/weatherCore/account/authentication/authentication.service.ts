@@ -7,7 +7,7 @@ import {
     SignupDto,
 } from '@modules/weatherCore/account/authentication/dto';
 import { User } from '@modules/weatherCore/account/user';
-import { JWTPayload } from '@modules/weatherCore/account/authentication/types';
+import { UserJWTPayload } from '@modules/weatherCore/account/authentication/types';
 
 export class AuthenticationService {
     private readonly userService = new UserService();
@@ -55,7 +55,7 @@ export class AuthenticationService {
     }
 
     private async generateToken(user: User): Promise<string> {
-        const payload: JWTPayload = {
+        const payload: UserJWTPayload = {
             id: user.id,
             email: user.email,
         };
