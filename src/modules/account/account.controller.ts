@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { UserController } from '@modules/weatherCore/account/user/user.controller';
-import { AuthenticationController } from '@modules/weatherCore/account/authentication/authentication.controller';
+import { AuthenticationController } from '@modules/account/authentication/authentication.controller';
+import { UserController } from '@modules/account/user/user.controller';
 
 export const AccountController = () => {
     const router = Router();

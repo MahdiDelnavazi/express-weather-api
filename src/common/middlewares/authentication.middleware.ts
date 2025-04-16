@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import { UserJWTPayload } from '@modules/weatherCore/account/authentication/types';
 import { UnauthorizedException } from '@common/exceptions';
 import { JWTHelper } from '@common/helpers';
+import { UserJWTPayload } from '@modules/account/authentication';
 
 export const authentication = (
     req: Request,

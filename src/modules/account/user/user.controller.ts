@@ -2,8 +2,8 @@ import { HttpStatus } from '@common/enums';
 import { handleRoute } from '@common/helpers';
 import { authentication } from '@common/middlewares';
 import { Router } from 'express';
-import { UserService } from '@modules/weatherCore/account/user/user.service';
-import { UserDto } from '@modules/weatherCore/account/user/dto';
+import { UserService } from '@modules/account/user/user.service';
+import { UserDto } from '@modules/account/user/dto';
 
 export const UserController = () => {
     const router = Router();

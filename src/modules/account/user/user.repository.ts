@@ -1,6 +1,6 @@
 import { Database } from '@common/database';
-import { SignupDto } from '@modules/weatherCore/account/authentication';
-import { User } from '@modules/weatherCore/account/user/entity';
+import { User } from './entity';
+import { SignupDto } from '../authentication';
 
 export class UserRepository {
     private readonly repository = Database.getRepository(User);

@@ -10,10 +10,10 @@ import express from 'express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Cache } from '@common/cache';
-import { AccountController } from '@modules/weatherCore/account/account.controller';
 import compression from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
+import { AccountController } from '@modules/account/account.controller';
 
 const swaggerSpecs = swaggerJSDoc({
     apis: ['src/modules/**/*.controller.ts', 'src/**/*.dto.ts'],

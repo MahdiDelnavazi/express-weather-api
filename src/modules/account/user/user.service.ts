@@ -1,6 +1,6 @@
-import { UserRepository } from '@modules/weatherCore/account/user/user.repository';
-import { User } from '@modules/weatherCore/account/user/entity';
-import { SignupDto } from '@modules/weatherCore/account/authentication';
+import { SignupDto } from '@modules/account/authentication';
+import { User } from '@modules/account/user';
+import { UserRepository } from '@modules/account/user/user.repository';
 
 export class UserService {
     private readonly userRepository = new UserRepository();

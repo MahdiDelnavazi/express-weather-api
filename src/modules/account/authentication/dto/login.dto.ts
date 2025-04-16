@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from 'class-validator';
-import { SignupDto } from '@modules/weatherCore/account/authentication';
+import { SignupDto } from './signup.dto';
 
 /**
  * @swagger

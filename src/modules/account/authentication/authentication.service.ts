@@ -1,13 +1,10 @@
 import { BadRequestException } from '@common/exceptions';
 import { BcryptHelper } from '@common/helpers';
 import { JWTHelper } from '@app/common/helpers/jwt.helper';
-import { UserService } from '@modules/weatherCore/account/user/user.service';
-import {
-    LoginDto,
-    SignupDto,
-} from '@modules/weatherCore/account/authentication/dto';
-import { User } from '@modules/weatherCore/account/user';
-import { UserJWTPayload } from '@modules/weatherCore/account/authentication/types';
+import { User } from '../user';
+import { UserService } from '../user/user.service';
+import { LoginDto, SignupDto } from './dto';
+import { UserJWTPayload } from './types';
 
 export class AuthenticationService {
     private readonly userService = new UserService();
