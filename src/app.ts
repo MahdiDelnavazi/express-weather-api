@@ -7,6 +7,7 @@ import { catchMissingRoutes } from '@common/middlewares/catchMissingRoutes.middl
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Cache } from '@common/cache';
+import { transformResponse } from '@common/middlewares/transformResponse.middleware';
 
 const swaggerSpecs = swaggerJSDoc({
     apis: ['src/modules/**/*.controller.ts', 'src/**/*.dto.ts'],
@@ -34,6 +35,7 @@ export const startServer = async () => {
     // Middlewares
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use(transformResponse);
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
     // Routes

@@ -1,1 +1,2 @@
-export * from './queryParams.type';
+export * from './queryParams';
+export * from './express';
