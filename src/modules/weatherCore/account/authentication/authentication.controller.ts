@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { AuthenticationService } from './authentication.service';
 import { handleRoute } from '@common/helpers';
 import { HttpStatus } from '@common/enums';
 import {
     AuthenticationResponseDto,
     LoginDto,
     SignupDto,
-} from '@modules/weatherCore/account/authentication/dto';
+} from '@modules/weatherCore/account/authentication';
+import { AuthenticationService } from '@modules/weatherCore/account/authentication/authentication.service';
 
 export const AuthenticationController = () => {
     const router = Router();

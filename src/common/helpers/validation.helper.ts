@@ -1,6 +1,6 @@
 import { validate } from 'class-validator';
 import { ClassConstructor, plainToInstance } from 'class-transformer';
-import { BadRequestException } from '@common/exceptions/badRequest.exception';
+import { BadRequestException } from '@common/exceptions';
 
 export class ValidationHelper {
     static async validate<T extends object>(

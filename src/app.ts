@@ -1,13 +1,15 @@
 import { Config } from '@common/config';
 import { Database } from '@common/database';
 import { WeatherController } from '@modules/weatherCore/weather/weather.controller';
-import { errorHandler } from '@common/middlewares';
+import {
+    errorHandler,
+    catchMissingRoutes,
+    transformResponse,
+} from '@common/middlewares';
 import express from 'express';
-import { catchMissingRoutes } from '@common/middlewares/catchMissingRoutes.middleware';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Cache } from '@common/cache';
-import { transformResponse } from '@common/middlewares/transformResponse.middleware';
 import { AccountController } from '@modules/weatherCore/account/account.controller';
 
 const swaggerSpecs = swaggerJSDoc({
