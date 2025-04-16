@@ -8,6 +8,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Cache } from '@common/cache';
 import { transformResponse } from '@common/middlewares/transformResponse.middleware';
+import { AccountController } from '@modules/weatherCore/account/account.controller';
 
 const swaggerSpecs = swaggerJSDoc({
     apis: ['src/modules/**/*.controller.ts', 'src/**/*.dto.ts'],
@@ -40,6 +41,7 @@ export const startServer = async () => {
 
     // Routes
     app.use('/weather', WeatherController());
+    app.use('/account', AccountController());
 
     // Error handler
     app.use(errorHandler);

@@ -8,12 +8,12 @@ import { isUUID } from 'class-validator';
 import { UpdateWeatherRecordDto } from '@modules/weatherCore/weather/dto/updateWeatherRecord.dto';
 
 export class WeatherService {
-    constructor() {}
-
     private readonly weatherRepository = new WeatherRepository(
         Database.getRepository(Weather),
     );
     private readonly weatherProvider = new WeatherProviderService();
+
+    constructor() {}
 
     async findAll(
         findWeatherRecordsDto: FindWeatherRecordsDto,
