@@ -7,12 +7,13 @@
         "start": "npm run build && npm run start:prod",
         "start:prod": "node ./dist/app.js",
         "build": "rimraf ./dist && tspc -p ./tsconfig.build.json",
-        "test:e2e": "jest --config ./test/jest-e2e.config.js --force-exit"
+        "test:e2e": "jest --config ./test/jest-e2e.config.js"
     },
     "author": "Mahdi Delnavazi",
     "license": "ISC",
     "description": "",
     "devDependencies": {
+        "@faker-js/faker": "^9.5.1",
         "@types/bcrypt": "^5.0.2",
         "@types/express": "^5.0.0",
         "@types/jest": "^29.5.14",
@@ -20,6 +21,7 @@
         "@types/swagger-ui-express": "^4.1.8",
         "@types/jsonwebtoken": "^9.0.9",
         "@types/node": "^22.13.9",
+        "tsconfig-paths": "^4.2.0",
         "@types/supertest": "^6.0.2",
         "prettier": "^3.5.3",
         "rimraf": "^6.0.1",
