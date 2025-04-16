@@ -16,7 +16,7 @@ import helmet from 'helmet';
 import { AccountController } from '@modules/account/account.controller';
 
 const swaggerSpecs = swaggerJSDoc({
-    apis: [__dirname + '/modules/**/*.controller.ts'],
+    apis: ['src/modules/**/*.controller.ts', 'src/modules/**/*.dto.ts'],
     definition: {
         openapi: '3.0.0',
         info: {
