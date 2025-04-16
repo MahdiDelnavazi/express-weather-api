@@ -17,7 +17,9 @@ export class Database {
             username: Config.Database.USERNAME,
             password: Config.Database.PASSWORD,
             database: Config.Database.DATABASE,
-            entities: [path.join(__dirname, '../../**/*.entity.{ts,js}')],
+            entities: [
+                path.join(__dirname, '../../modules/**/**/*.entity.{ts,js}'),
+            ],
             synchronize: !Config.Environment.IS_PRODUCTION,
         });
 
