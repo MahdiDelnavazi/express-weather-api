@@ -20,7 +20,7 @@ const swaggerSpecs = swaggerJSDoc({
     },
 });
 
-const startServer = async () => {
+export const startServer = async () => {
     const app = express();
 
     // Initialize database connection
@@ -59,6 +59,10 @@ const startServer = async () => {
         await Database.close();
         Cache.close();
     });
+
+    return app;
 };
 
-void startServer();
+if (!Config.Environment.IS_TEST) {
+    void startServer();
+}
