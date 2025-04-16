@@ -13,4 +13,7 @@ module.exports = {
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
         prefix: '<rootDir>/../',
     }),
+    globalSetup: './globalSetup.ts',
+    globalTeardown: './globalTeardown.ts',
+    maxWorkers: 1,
 };

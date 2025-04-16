@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { handleRoute } from '@common/helpers';
 import { HttpStatus } from '@common/enums';
-import { UserService } from './user.service';
+import { handleRoute } from '@common/helpers';
 import { authentication } from '@common/middlewares';
-import { UserDto } from './dto';
+import { Router } from 'express';
+import { UserService } from '@modules/weatherCore/account/user/user.service';
+import { UserDto } from '@modules/weatherCore/account/user/dto';
 
 export const UserController = () => {
     const router = Router();
@@ -29,8 +29,9 @@ export const UserController = () => {
      *       401:
      *        description: Unauthorized
      */
-    router.use(authentication).get(
+    router.get(
         '/me',
+        authentication,
         handleRoute(async (req, res) => {
             const user = await userService.findOneById(req.user.id);
 

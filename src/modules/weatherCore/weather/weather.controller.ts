@@ -1,14 +1,14 @@
+import { HttpStatus } from '@common/enums';
 import { handleRoute } from '@common/helpers';
+import { authentication } from '@common/middlewares';
 import {
     FetchWeatherDto,
     FindWeatherRecordsDto,
+    UpdateWeatherRecordDto,
     WeatherRecordDto,
-} from './dto';
+} from '@modules/weatherCore/weather';
 import { WeatherService } from '@modules/weatherCore/weather/weather.service';
-import { Router, Request, Response, NextFunction } from 'express';
-import { HttpStatus } from '@common/enums';
-import { UpdateWeatherRecordDto } from '@modules/weatherCore/weather/dto/updateWeatherRecord.dto';
-import { authentication } from '@app/common/middlewares';
+import { NextFunction, Request, Response, Router } from 'express';
 
 export const WeatherController = () => {
     const router = Router();
@@ -166,8 +166,9 @@ export const WeatherController = () => {
      *       404:
      *         description: Weather data not found
      */
-    router.use(authentication).post(
+    router.post(
         '/',
+        authentication,
         handleRoute(
             async (req, res) => {
                 const fetchWeatherDto = req.body;
@@ -215,10 +216,11 @@ export const WeatherController = () => {
      *       404:
      *         description: Weather record not found
      */
-    router.use(authentication).put(
+    router.put(
         '/:id',
+        authentication,
         handleRoute(
-            async (req, res) => {
+            async (req, res, next) => {
                 const id = req.params.id;
                 const updateWeatherRecordDto = req.body;
 
@@ -260,8 +262,9 @@ export const WeatherController = () => {
      *       404:
      *         description: Weather record not found
      */
-    router.use(authentication).delete(
+    router.delete(
         '/:id',
+        authentication,
         handleRoute(async (req: Request, res: Response, next: NextFunction) => {
             const id = req.params.id;
 
